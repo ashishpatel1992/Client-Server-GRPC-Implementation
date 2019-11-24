@@ -16,8 +16,8 @@
  * 
  *
  */
-// protoc -I . --grpc_out=. --plugin=protoc-gen-grpc=grpc_cpp_plugin helloworld.proto
-// protoc -I . --cpp_out=. ../../protos/helloworld.proto
+// protoc -I . --grpc_out=. --plugin=protoc-gen-grpc=grpc_cpp_plugin rpcserv.proto
+// protoc -I . --cpp_out=. ../../protos/rpcserv.proto
 
 #include <iostream>
 #include <memory>
@@ -27,15 +27,15 @@
 #include <grpcpp/grpcpp.h>
 
 
-#include "helloworld.grpc.pb.h"
+#include "rpcserv.grpc.pb.h"
 
 using grpc::Server;
 using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::Status;
-using helloworld::HelloRequest;
-using helloworld::HelloReply;
-using helloworld::Greeter;
+using rpcserv::Call;
+using rpcserv::Return;
+using rpcserv::AddRPCService;
 static uint32_t total =0;
 uint32_t add(uint32_t a, uint32_t b){
   total+= (a + b);
@@ -46,9 +46,9 @@ uint32_t gettotal(void){
 }
 using namespace std;
 // Logic and data behind the server's behavior.
-class GreeterServiceImpl final : public Greeter::Service {
-  Status SayHello(ServerContext* context, const HelloRequest* request,
-                  HelloReply* reply) override {
+class AddRPCServiceServiceImpl final : public AddRPCService::Service {
+  Status AddRPC(ServerContext* context, const Call* request,
+                  Return* reply) override {
     // std::string prefix("Hello ");
     if(request->name() == "add"){
       std::string s = request->args();
@@ -74,7 +74,7 @@ class GreeterServiceImpl final : public Greeter::Service {
 
 void RunServer() {
   std::string server_address("0.0.0.0:50051");
-  GreeterServiceImpl service;
+  AddRPCServiceServiceImpl service;
 
   ServerBuilder builder;
   // Listen on the given address without any authentication mechanism.

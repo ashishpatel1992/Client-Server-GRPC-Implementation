@@ -2,22 +2,22 @@ syntax = "proto3";
 
 option java_package = "ex.grpc";
 
-package helloworld;
+package rpcserv;
 
 // The greeting service definition.
-service Greeter {
+service AddRPCService {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc AddRPC (Call) returns (Return) {}
 }
 
 // The request message containing the user's name.
-message HelloRequest {
+message Call {
   string name = 1; //name of function to call
-  bytes args =2; //agruments to function
+  bytes args = 2; //agruments to function
 }
 
 // The response message containing the greetings
-message HelloReply {
+message Return {
   string message = 1;
   bytes value = 2;
 }
