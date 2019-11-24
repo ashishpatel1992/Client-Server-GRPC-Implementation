@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-option java_package = "ex.grpc";
-
 package rpcserv;
 
 // The greeting service definition.

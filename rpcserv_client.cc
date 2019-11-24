@@ -23,13 +23,13 @@ class AddRPCServiceClient {
 
   // Assembles the client's payload, sends it and presents the response back
   // from the server.
-  std::string AddRPC(const std::string& user, const std::string& data) {
+  std::string AddRPC(const std::string& func_name, const std::string& arg_data) {
     // Data we are sending to the server.
     Call request;
     // int args_x[] = {5,10};
-    request.set_name(user);
+    request.set_name(func_name);
     // std::cout<<google::protobuf::serializ(args_x);
-    request.set_args(data);
+    request.set_args(arg_data);
     // std::string test[255];
     // request.SerializeToString(test);
     // std::cout<<test<<"\n";
@@ -80,22 +80,22 @@ int main(int argc, char* argv[]) {
     help();
     return 0;
   }
-  std::string user;
-  user = argv[1];
-  std::string args;
+  std::string func_name;
+  func_name = argv[1];
+  std::string arg_data;
   
   for (int i = 2; i < argc; ++i){
-        if(user == "add"){
-            args = args+argv[i]+" ";
+        if(func_name == "add"){
+            arg_data = arg_data+argv[i]+" ";
             // cout << argv[i] << "\n"; 
         }else break;
     } 
   
-  std::string reply = AddRPCService.AddRPC(user,args);
+  std::string reply = AddRPCService.AddRPC(func_name,arg_data);
   if(reply != "")
-    if(user == "add")
+    if(func_name == "add")
       std::cout << "Sum received: " << reply <<"\n";
-    else if(user == "gettotal")
+    else if(func_name == "gettotal")
       std::cout<<" Total is "<< reply<<"\n";
     else  std::cout<<" ";
   return 0;

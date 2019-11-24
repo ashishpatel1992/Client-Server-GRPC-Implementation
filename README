@@ -19,3 +19,5 @@ Suggesting Guide:
 https://github.com/grpc/grpc/blob/v1.25.0/examples/cpp/route_guide/route_guide_client.cc
 
 Packing data: https://github.com/protobuf-c/protobuf-c/wiki/Examples
+
+Parsing and serialization https://developers.google.com/protocol-buffers/docs/cpptutorial
