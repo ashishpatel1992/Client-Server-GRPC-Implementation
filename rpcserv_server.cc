@@ -44,23 +44,35 @@ uint32_t add(uint32_t a, uint32_t b){
 uint32_t gettotal(void){
   return (total);
 }
+void intro(){
+  std::cout<<"\n **************************************************\n";
+  std::cout<<"\n *\tDeveloped by: \n";
+  std::cout<<"\n *\tAshish Patel (2019H1030028G) \n";
+  std::cout<<"\n *\tNand Parikh  (2019H1030022G) \n";
+  std::cout<<"\n ***************************************************\n";
+}
 using namespace std;
 // Logic and data behind the server's behavior.
 class AddRPCServiceServiceImpl final : public AddRPCService::Service {
-  Status AddRPC(ServerContext* context, const Call* request,
-                  Return* reply) override {
+  Status AddRPC(ServerContext* context, const Call* request, Return* reply) override {
     // std::string prefix("Hello ");
+
     if(request->name() == "add"){
+    
       std::string s = request->args();
       uint32_t x,y;
       istringstream istringname(s);
       istringname>> x>>y;
       uint32_t result = add(x,y);
+    
       reply->set_message("success");
       reply->set_value(std::to_string(result));
+    
     }else if(request->name() == "gettotal"){
+
       reply->set_message("success");
       reply->set_value(std::to_string(total));
+    
     }
     else{
       reply->set_message("Request for "+ request->name()+ " not found");
@@ -73,7 +85,8 @@ class AddRPCServiceServiceImpl final : public AddRPCService::Service {
 };
 
 void RunServer() {
-  std::string server_address("0.0.0.0:50051");
+  intro();
+  std::string server_address("0.0.0.0:9999");
   AddRPCServiceServiceImpl service;
 
   ServerBuilder builder;

@@ -18,6 +18,6 @@ message Call {
 
 // The response message containing the greetings
 message Return {
-  string message = 1;
-  bytes value = 2;
+  string message = 1; //returns success or failure
+  bytes value = 2; // returns the sum or total
 }
