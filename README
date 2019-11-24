@@ -1,4 +1,4 @@
-make helloworld.grpc.pb.cc helloworld.pb.cc
+make rpcserv.grpc.pb.cc rpcserv.pb.cc
 then
 make
 
