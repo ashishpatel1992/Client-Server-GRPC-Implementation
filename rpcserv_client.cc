@@ -72,7 +72,7 @@ class AddRPCServiceClient {
 void help(){
   std::cout<<"\n Only Two actions permitted: \n\t1) add \n\t2) gettotal";
   std::cout<<"\n use ./rpcserv_client [ip] [port] add x y\n\t where x and y can be any integer number";
-  std::cout<<"\n use ./rpcserv_client gettotal\n\t Returns the total sum computer in Server\n";
+  std::cout<<"\n use ./rpcserv_client [ip] [port] gettotal\n\t Returns the total sum computer in Server\n";
 }
 
 
