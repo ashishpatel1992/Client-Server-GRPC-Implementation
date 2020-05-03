@@ -54,7 +54,12 @@ whether local or remote.
 arguments for the add function with other required information.
 - For byte array, unsigned char can be used by typedef -ing.
 
-## 5. Contributers
+## 5. References
+- https://github.com/protobuf-c/protobuf-c/wiki/Examples
+- https://grpc.io/docs/tutorials/basic/cpp/
+- https://developers.google.com/protocol-buffers/docs/cpptutorial
+
+## 6. Contributers
 Contributers in this project
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
